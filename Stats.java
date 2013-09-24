@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class stats {
+public class Stats {
 	
 	public static void main(String[] args) {
 		int[] mainArray;
