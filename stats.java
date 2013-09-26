@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class stats {
+public class Stats {
 	
 	public static void main(String[] args) {
 		int[] mainArray;
@@ -9,8 +9,7 @@ public class stats {
 			mainArray[i] = (int)(Math.random()* 10);
 			System.out.println(Arrays.toString(mainArray));
 		};
-
-		System.out.println(quartile3(mainArray));
+		System.out.println(median(mainArray));
 
 	}
 
@@ -22,19 +21,19 @@ public class stats {
 				// System.out.print("Max of array: " + x);
 			}
 		}
-		System.out.println();
+		// System.out.println();
 		return x;
 	}
 
 	public static int min(int[] a) {
-		int x=0;
+		int x = a[0];
 		for (int i = 0; i<a.length; i++) {
 			if (a[i] < x) {
 				x=a[i];
 				// System.out.print("Min of array: " + x);
 			}
 		}
-		System.out.println();
+		// System.out.println();
 		return x;
 	}
 
@@ -44,23 +43,25 @@ public class stats {
 			x+=a[i];
 		}
 		x/=a.length;
-		System.out.println();
+		// System.out.println();
 		return x;
 	}
 
 	public static double median(int[] a) {
 		Arrays.sort(a);
-		double x=0;
+		double x = 0;
 		for (int i = 0; i<a.length; i++) {
 			x=a[i];
 			if (a.length%2==0) {
-				x=a.length/2;
+				double term1=(a[a.length/2 - 1]);
+				double term2=(a[a.length/2 + 1]);
+				x = (term2 + term1) / 2;
 				// System.out.print("Median of array: " + (a.length/2));
 			} else {
-				x=(x/2);
+				x = a[a.length/2];
 				// System.out.print("Median of array: " + x);
 			}
-			System.out.println();
+			// System.out.println();
 		}
 		return x;
 	}
@@ -76,7 +77,7 @@ public class stats {
 				x = x / 2;
 			}
 		}
-		System.out.println();
+		// System.out.println();
 		return x;
 	}
 
@@ -91,28 +92,28 @@ public class stats {
 				x = x / 2;
 			}
 		}
-		System.out.println();
+		// System.out.println();
 		return x;
 	}
 
 
-	public static int mode(int[] a) {
-		int x=0, y=0, z=0;
-		for (int i = 0; i < a.length; i++) {
-			x=0;
-			for (int c = 0; c < a.length; c++) {
-				if (a[c]==a[i]) {
-					x++;
-				}
-			}
-			if (x>z) {
-				z=x;
-				y=a[i];
-			}
-		}
-		System.out.println(x);
-		System.out.println();
-		return x;
+	public static int mode(int a[]) { //fix
+	    int maxValue=0, maxCount=0;
+
+	    for (int i = 0; i < a.length; i++) {
+	        int count = 0;
+	        for (int j = 0; j < a.length; j++) {
+	            if (a[j] == a[i]) {
+	            	count++;
+	            }
+	        }
+	        if (count > maxCount) {
+	            maxCount = count;
+	            maxValue = a[i];
+	        }
+	    }
+
+	    return maxValue;
 	}
 
 	public static double standDev(int[] a) {
@@ -125,7 +126,7 @@ public class stats {
 			x /= a.length;
 			x = Math.sqrt(x);
 		}
-		System.out.println("Standard Deviation of array: " + x);
+		// System.out.println("Standard Deviation of array: " + x);
 		return x;
 	}
 
