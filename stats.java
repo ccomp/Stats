@@ -3,13 +3,13 @@ import java.util.Arrays;
 public class Stats {
 	
 	public static void main(String[] args) {
-		int[] mainArray;
-		mainArray = new int[10];
-		for (int i =0; i<10; i++) {
-			mainArray[i] = (int)(Math.random()* 10);
-			System.out.println(Arrays.toString(mainArray));
-		};
-		System.out.println(median(mainArray));
+		// int[] mainArray;
+		// mainArray = new int[6];
+		// for (int i =0; i<6; i++) {
+		// 	mainArray[i] = (int)(Math.random()* 6);
+		// 	System.out.println(Arrays.toString(mainArray));
+		// };
+		// System.out.println(standDev(mainArray));
 
 	}
 
@@ -44,6 +44,15 @@ public class Stats {
 		}
 		x/=a.length;
 		// System.out.println();
+		return x;
+	}
+
+	public static double secondarymean(double[] a) {
+		double x=0;
+		for (int i = 0; i<a.length; i++) {
+			x+=a[i];
+		}
+		x/=a.length;
 		return x;
 	}
 
@@ -117,15 +126,19 @@ public class Stats {
 	}
 
 	public static double standDev(int[] a) {
+		// double jack = 0;
+		// double jill = 0;
 		double x = 0;
 		double arrayMean = mean(a);
+		double[] deviate = new double[a.length];
 		for (int i = 0; i<a.length; i++) {
-			x = a[i]-arrayMean;
-			x = x * x;
-			x += a[i];
-			x /= a.length;
-			x = Math.sqrt(x);
+			// jack += a[i];
+			// jill = jack/a.length;
+			deviate[i] = (a[i]-arrayMean) * (a[i]-arrayMean);
+			// x += deviate[i];
+			// x /= a.length;
 		}
+		x = Math.sqrt(secondarymean(deviate));
 		// System.out.println("Standard Deviation of array: " + x);
 		return x;
 	}
